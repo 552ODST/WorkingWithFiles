@@ -14,7 +14,17 @@ namespace WorkingWithFiles
         // Do not forget to Trim every file.
         public static int WordCount(string fileName)
         {
-            return default;
+            var result = 0;
+            string filePath = Path.Combine(Directory.GetCurrentDirectory().ToString(), "TextFiles", fileName);
+            var countFile = File.ReadAllLines(filePath);
+
+            foreach (var item in countFile)
+            {
+                var number = item.Trim().Split(" ").Length;
+                result += number;
+            }
+
+            return result;
         }
 
         // 2- Write a method that reads a text file and returns the longest word in the file. Ex.
@@ -23,7 +33,32 @@ namespace WorkingWithFiles
         // Do not Trim every file.
         public static string LongestWord(string fileName)
         {
-            return default;
+            string result = "File is Empty";
+            string filePath = Path.Combine(Directory.GetCurrentDirectory().ToString(), "TextFiles", fileName);
+            var countFile = File.ReadAllLines(filePath);
+            var AllTheWords = new string[0];
+
+            if (countFile.Length == 0)
+            {
+                return result;
+            }
+
+            foreach (var item in countFile)
+            {
+                AllTheWords = item.Trim().Split(" ");
+            }
+
+            result = AllTheWords[0];
+
+            for (var i = 0; i < AllTheWords.Length; i++)
+            {
+                if (AllTheWords[i].Length > result.Length)
+                {
+                    result = AllTheWords[i];
+                }
+            }
+            // Delete the below line when you are writing your code 
+            return result;
         }
     }
 
