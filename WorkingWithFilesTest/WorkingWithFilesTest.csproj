@@ -18,13 +18,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="TextFiles\EmptyFile.txt">
+    <None Update="EmptyFile.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="TextFiles\SingularLongWord.txt">
+    <None Update="SingularLongWord.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="TextFiles\WordCounter.txt">
+    <None Update="WordCounter.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
