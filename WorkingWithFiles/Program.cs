@@ -17,7 +17,22 @@ namespace WorkingWithFiles
         // .Trim() might be useful in this situation.
         public static int WordCount(string fileName)
         {
-            return default;
+            List<string> words = new List<string>();
+
+            string path = @"C:\Users\SSgt Cooper\Documents\GitHub\WorkingWithFiles\WorkingWithFilesTest";
+            string line;
+            int count = 0;
+            
+            using (StreamReader file = new StreamReader(new FileStream(Path.Combine(path, fileName) , FileMode.Open)))
+                {
+                    while ((line = file.ReadLine()) != null)
+                    {
+                        words.AddRange(line.Trim().Split(' '));
+                    }
+                    count += words.Count;
+                }
+
+            return count;
         }
 
         // 2- Write a method that reads a text file and returns the longest word in the file. Ex.
@@ -26,7 +41,28 @@ namespace WorkingWithFiles
         // .Trim() might be useful in this situation.
         public static string LongestWord(string fileName)
         {
-            return default;
+            List<string> words = new List<string>();
+
+            string path = @"C:\Users\SSgt Cooper\Documents\GitHub\WorkingWithFiles\WorkingWithFilesTest";
+            string line;
+            string longest;
+            
+            using (StreamReader file = new StreamReader(new FileStream(Path.Combine(path, fileName), FileMode.Open)))
+            {
+                if (file.Peek() < 0)
+                {
+                    longest = "File is Empty";
+                }
+                else
+                {
+                    while ((line = file.ReadLine()) != null)
+                    {
+                        words.AddRange(line.Trim().Split(' '));
+                    }
+                    longest = words.OrderByDescending(n => n.Length).First();
+                }
+            }
+            return longest;
         }
     }
 
@@ -34,7 +70,7 @@ namespace WorkingWithFiles
     {
         public static void Main()
         {
-
+            
         }
     }
 }
