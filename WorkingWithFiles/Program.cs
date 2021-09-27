@@ -17,7 +17,27 @@ namespace WorkingWithFiles
         // .Trim() might be useful in this situation.
         public static int WordCount(string fileName)
         {
-            return default;
+            int result = 0;
+            string line = "";
+            string[] words;
+            if (File.Exists(fileName))
+            {
+                string[] content = File.ReadAllLines(fileName);
+                if (content.Length == 0)
+                {
+                    return result;
+                }
+                else
+                {
+                    for (int i = 0; i < content.Length; i++)
+                    {
+                        line = content[i].Trim();
+                        words = line.Split(" .,".ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
+                        result += words.Count();
+                    }
+                }
+            }
+            return result;
         }
 
         // 2- Write a method that reads a text file and returns the longest word in the file. Ex.
@@ -26,7 +46,33 @@ namespace WorkingWithFiles
         // .Trim() might be useful in this situation.
         public static string LongestWord(string fileName)
         {
-            return default;
+            string result = "";
+            string line = "";
+            string[] words;
+            if (File.Exists(fileName))
+            {
+                string[] content = File.ReadAllLines(fileName);
+                if (content.Length == 0)
+                {
+                    return "File is Empty";
+                }
+                else
+                {
+                    for (int i = 0; i < content.Length; i++)
+                    {
+                        line = content[i].Trim();
+                        words = line.Split(" .,".ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
+                        for (int j = 0; j < words.Length; j++)
+                        {
+                            if (words[j].Length > result.Length)
+                            {
+                                result = words[j];
+                            }
+                        }
+                    }
+                }
+            }
+            return result;
         }
     }
 
